@@ -1,0 +1,43 @@
+.filter-box {
+  border-radius: 5px;
+  border: 1px solid rgb(170, 170, 170);
+  margin: 10px !important;
+}
+.text-black {
+  color: rgb(54, 54, 54) !important;
+}
+
+.input-selector {
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 5px;
+  color: rgb(63, 63, 63);
+  padding: 10px !important;
+}
+
+#paddingTop {
+  padding: 5px !important;
+  margin: 5px !important;
+}
+.updateall {
+  color: rgb(66, 71, 20);
+}
+
+/* CSS */
+.button-34 {
+  box-shadow: #6e6e6e 0 10px 20px -10px !important;
+  background-color: #0099ff !important;
+  box-sizing: border-box !important;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+}
+
+#button-34 {
+  box-shadow: #6e6e6e 0 10px 20px -10px !important;
+  background-color: rgb(255, 87, 87) !important;
+  box-sizing: border-box !important;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+}
+.link-d {
+  text-decoration: none !important;
+}

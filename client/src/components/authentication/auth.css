@@ -1,0 +1,35 @@
+.OnPassword {
+  color: #4d506c;
+}
+
+.title-text {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.authButton {
+  height: 40px;
+  width: 100px;
+  background: #055160 !important;
+  color: white;
+  border: 2px solid #134048;
+  border-radius: 2px;
+}
+
+.authButtonBlock {
+  height: 40px;
+  width: 100px;
+  background: #335b62 !important;
+  color: white;
+  border: 2px solid #254d54;
+  border-radius: 2px;
+}
+
+/* --------CSS R------------ */
+span.MuiCircularProgress-root.MuiCircularProgress-indeterminate.MuiCircularProgress-colorPrimary.css-5twynx-MuiCircularProgress-root {
+  width: 15px !important;
+  height: 15px !important;
+  color: #0d2c31 !important;
+}
