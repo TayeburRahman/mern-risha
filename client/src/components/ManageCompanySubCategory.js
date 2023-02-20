@@ -17,8 +17,7 @@ function ManageCompanySubCategory({ categoryDetails, subCategory, setState, stat
 
 
 
-    const onDelete = async (id, data) => {
-        console.log(id, data) 
+    const onDelete = async (id, data) => { 
         axios.delete(`http://localhost:6060/api/v1/subcategory/company/sub/delete/${id}/${data}`)
             .then(res => {
                 if (res.status === 200) {
@@ -28,9 +27,7 @@ function ManageCompanySubCategory({ categoryDetails, subCategory, setState, stat
             }).catch((err) => {
 
             })
-    }
-
-    console.log(coCategory)
+    } 
 
 
 

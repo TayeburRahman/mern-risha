@@ -118,7 +118,10 @@ const  getUserAllProject = async (req, res) => {
   try { 
     const user_email = req.params.email
 
+    console.log(user_email)
+
     const project = await projectModels.find({ $and: [{user_email}] }) 
+    console.log(project)
 
     return res.status(201).send(project)
   } catch (error) {

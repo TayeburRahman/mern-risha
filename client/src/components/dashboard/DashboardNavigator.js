@@ -144,8 +144,8 @@ export default function DashboardNavigator(props) {
 
         <AccordionDetails style={{ marginBottom: "3px" }}>
           <ListItem mt={4} mb={4} disablePadding sx={{ backgroundColor: '#081627' }}>
-            <Link className='linkDashboard' to={`/dashboard/user_list/profile/:id`}>
-              <ListItemButton selected={uri === `/dashboard/user_list/profile/:id` ? true : false} sx={item}>
+            <Link className='linkDashboard' to={`/dashboard/user_list/profile`}>
+              <ListItemButton selected={uri === `/dashboard/user_list/profile` ? true : false} sx={item}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>

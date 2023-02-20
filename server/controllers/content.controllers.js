@@ -42,12 +42,7 @@ const  getContent = async (req, res) => {
       company_cate,
       com_sub_cate,
       category,
-      subcategory  } = req.params  
-
-    console.log("company_cate",req.params)
-    // console.log("com_sub_cate",com_sub_cate)
-    // console.log("category",category)
-    // console.log("subcategory",subcategory)  
+      subcategory  } = req.params    
 
     if(com_sub_cate){
         const data = await contentModels.find({ $and: [{ category }, { subcategory }, { company_cate }, { com_sub_cate }]})  

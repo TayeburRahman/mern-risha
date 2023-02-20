@@ -27,9 +27,8 @@ function CreateProjectStep4({ company_cate, com_sub_cate, subcategory, category,
                 setProjectData(response.data);
             });
         }
-    }, []);
-
-    console.log('projectdata',projectdata?._id)
+    }, [projectName, category, subcategory, company_cate]);
+ 
 
     return (
         <div> 

@@ -40,8 +40,7 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
         projectName && selectCategory ? setDisabled(false) : setDisabled(true)
  
     }, [projectName, selectCategory, selectSubCategory])
-
-    console.log(  "selectCategory",selectCategory, 'selectSubCategory', selectSubCategory)
+ 
 
     useEffect(() => {
         if(selectSubCategory){

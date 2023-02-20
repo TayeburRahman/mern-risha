@@ -48,9 +48,7 @@ function ManageSubCategory() {
         setState(true? false: true)
     }
 
-    const handleDelete = (tittle) => { 
-
-        console.log(tittle)
+    const handleDelete = (tittle) => {  
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {

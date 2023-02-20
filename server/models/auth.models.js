@@ -6,7 +6,11 @@ let bcrypt = require("bcryptjs");
 // model step: 1
 const authModel = new mongoose.Schema(
         {
-            displayName: {
+            familyName: {
+                type: String, 
+                trim: true,
+            },
+            info: {
                 type: String, 
                 trim: true,
             },

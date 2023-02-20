@@ -31,8 +31,7 @@ export default function UpdateSubcategory({ openUpdate, setOpenUpdate,updateData
         handleSubmit,
         formState: { errors },
     } = useForm();
-
-    console.log('categoryDetails', updateData?.tittle)
+ 
     
      const onSubmit = (data) => { 
      const description = data?.description

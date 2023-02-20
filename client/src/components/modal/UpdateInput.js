@@ -32,8 +32,7 @@ export default function UpdateInput({ inputId, inputSingleData, open, setOpen, s
         formState: { errors },
     } = useForm();
 
-
-    console.log( 'inputSingleData', inputId)
+ 
     
      const onSubmit = (data) => { 
      const newInputData = data?.inputData

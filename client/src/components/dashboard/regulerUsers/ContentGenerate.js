@@ -3,6 +3,7 @@ import { Button, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import ReactQuill from 'react-quill';
 import { useParams } from 'react-router-dom';
 
 function ContentGenerate() {
@@ -13,9 +14,17 @@ function ContentGenerate() {
     const [subcategory, setSubcategory] = useState()
     const [company_cate, setCompany_cate] = useState()
     const path = useParams()
-    const [number, seNumber] = useState(0) 
-    
- 
+    const [number, seNumber] = useState(0)
+    const [editValue, setEditValue] = useState(false)
+    const [value, setValue] = useState('');
+    const [select, setSelect] = useState(false);
+
+    let auth = JSON.parse(localStorage.getItem('auth')) 
+    let user = auth?.user
+    let userEmail = auth?.user?.email
+
+
+
 
     useEffect(() => {
 
@@ -44,33 +53,107 @@ function ContentGenerate() {
                 });
         }
     }, [path, project]);
- 
+
 
     const handleOneClick = (number) => {
+        setValue('')
         seNumber(number == content?.length ? 0 : number)
     }
 
-    let contentSingle = content?.filter((data, idx) => idx === number); 
+    let contentSingle = content?.filter((data, idx) => idx === number);
+
+    const handleEdit = () => {
+        setEditValue(true)
+    }
+
+    const handleSave = () => {
+
+        if(select){
+
+            axios.post(`http://localhost:6060/api/v1/content/create/savecontent`,{
+                project,
+                content: value,
+                userEmail,
+                user 
+            })
+                .then(res => {
+                    if (res.status === 200) { 
+                        // setState(state ? false : true)
+                    }
+                }) 
+            
+
+
+             
+        }
+        setEditValue(false)
+    }
 
     return (
         <Paper elevation={0} className='paper100'>
             <Box className="" p={5}>
                 <Typography className='text-left'>{category}/{subcategory}/{company_cate}{com_sub_cate ? "/" : ''} {com_sub_cate ? com_sub_cate : ''}</Typography>
 
-                <Box mt={5} sx={{minHeight:"450px"}}>
+                <Box mt={5} style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     {
-                        content && contentSingle?.map(({ content, _id }) => (
-                            <div
-                                key={_id}
-                                className='text-left typed'
-                                dangerouslySetInnerHTML={{
-                                    __html: content,
-                                }}>
-                            </div>
-                        ))
+                        editValue ? (
+                            <Box style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="checkbox-signin"
+                                    checked={select}
+                                    onChange={() =>
+                                        setSelect(!select)
+                                    }
+                                />
+                                <label 
+                                style={{margin: '5px'}}
+                                    htmlFor="checkbox-signin"
+                                >
+                                    add your account
+                                </label>
+                                <Button className='text-left' onClick={handleSave}>  SAVE </Button>
+                            </Box>
+                        ) : (
+                            <Button className='text-left' onClick={handleEdit}>  Edit </Button>
+                        )
                     }
                 </Box>
-                <Button className='text-left' onClick={e => { handleOneClick(number === 0 ? 1 : number + 1) }}><AutorenewIcon sx={{fontSize:"20px"}} /> Regenerate response</Button>
+
+                {
+                    !editValue && (
+                        <Box style={{ display: 'grid' }}>
+                            <Box mt={1} sx={{ minHeight: "400px" }}>
+                                {
+                                    content && contentSingle?.map(({ content, _id }) => (
+                                        <div
+                                            key={_id}
+                                            className='text-left typed'
+                                            dangerouslySetInnerHTML={{
+                                                __html: value ? value : content,
+                                            }}>
+                                        </div>
+                                    ))
+                                }
+                            </Box>
+                            <Button className='text-left' onClick={e => { handleOneClick(number === 0 ? 1 : number + 1) }}><AutorenewIcon sx={{ fontSize: "20px" }} /> Regenerate response</Button>
+                        </Box>
+                    )
+                }
+
+                {
+                    editValue && (
+
+                        <Box mt={1} sx={{ minHeight: "400px" }}>
+                            {
+                                content && contentSingle?.map(({ content, _id }) => (
+                                    <ReactQuill theme="snow" style={{ height: "400px" }} value={value ? value : content} onChange={setValue} />
+                                ))
+                            }
+                        </Box>
+                    )
+                }
             </Box>
         </Paper>
     )

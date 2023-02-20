@@ -36,8 +36,7 @@ const DashboardMain = () => {
                 setCategory(response.data);
             });
     }, []);
-
-    console.log('Dashboard', backgroundColor[1])
+ 
     return (
         <Fragment>
             <div className="main-page">

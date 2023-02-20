@@ -77,8 +77,7 @@ function SingleSubCategory() {
     }
 
     const onDeleteInput = async (id, inputData) => { 
-
-        console.log('onDeleteInput', id, inputData)
+ 
         axios.put(`http://localhost:6060/api/v1/subcategory/single/input/delete/${id}`,{
             inputData
         })

@@ -1,5 +1,5 @@
  
-const { createUsers, getUsers, getAllUsers } = require("../controllers/auth.controllers");
+const { createUsers, getUsers, getAllUsers, updateUsers, getSingleUsers } = require("../controllers/auth.controllers");
 const verifyToken = require("../middleware/verifyToken");
 
 const router = require("express").Router();
@@ -7,6 +7,9 @@ const router = require("express").Router();
 router.route('/signup').post(createUsers);
 router.route('/login').post(getUsers);
 router.route('/all').get(getAllUsers);
-// router.route('/getByAllAuthor').get(verifyToken,getAllAdmin);
+router.route('/update').put(updateUsers);
+router.route('/single/:email').get(getSingleUsers);
+
+ 
 
 module.exports = router;

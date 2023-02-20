@@ -167,7 +167,7 @@ const SignUp = () => {
                                                 type="text"
                                                 id="familyName"
                                                 placeholder="Enter your name"
-                                                {...register('displayName', {
+                                                {...register('familyName', {
                                                     // required:
                                                     //     'Name is required',
                                                 })}

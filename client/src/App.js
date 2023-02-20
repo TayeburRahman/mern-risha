@@ -102,7 +102,7 @@ function App() {
                   </AdminRoute>
                } />
 
-               <Route path='user_list/profile/:userID' element={
+               <Route path='user_list/profile' element={
                   <PrivateRoute>
                      <UserProfile />
                   </PrivateRoute>
