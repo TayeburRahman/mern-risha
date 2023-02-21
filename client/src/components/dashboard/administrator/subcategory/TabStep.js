@@ -44,12 +44,12 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
 
     useEffect(() => {
         if(selectSubCategory){
-            axios.get(`http://localhost:6060/api/v1/subcategory/get/input/${category}/${subcategory}/${selectCategory}/${selectSubCategory}`)
+            axios.get(` http://localhost:5000/api/v1/subcategory/get/input/${category}/${subcategory}/${selectCategory}/${selectSubCategory}`)
             .then((response) => {
                 setInputData(response.data.input);
             }); 
         }else {
-            axios.get(`http://localhost:6060/api/v1/subcategory/get/input-c/${category}/${subcategory}/${selectCategory}`)
+            axios.get(` http://localhost:5000/api/v1/subcategory/get/input-c/${category}/${subcategory}/${selectCategory}`)
             .then((response) => {
                 setInputData(response.data.input);
             }); 
@@ -79,7 +79,7 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
 
         if(activeStep === 2){
             
-            axios.post(`http://localhost:6060/api/v1/project/create`,  
+            axios.post(` http://localhost:5000/api/v1/project/create`,  
             { 
                 category,
                 subcategory,

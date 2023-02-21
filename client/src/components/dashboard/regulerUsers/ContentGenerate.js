@@ -28,7 +28,7 @@ function ContentGenerate() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:6060/api/v1/project/single/${path?.id}`)
+        axios.get(` http://localhost:5000/api/v1/project/single/${path?.id}`)
             .then((res) => {
                 setProject(res?.data);
                 setCategory(res?.data?.category)
@@ -42,12 +42,12 @@ function ContentGenerate() {
 
     useEffect(() => {
         if (com_sub_cate) {
-            axios.get(`http://localhost:6060/api/v1/content/get/filter2/${category}/${subcategory}/${company_cate}/${com_sub_cate}`)
+            axios.get(` http://localhost:5000/api/v1/content/get/filter2/${category}/${subcategory}/${company_cate}/${com_sub_cate}`)
                 .then((res) => {
                     setContent(res?.data?.data);
                 });
         } else {
-            axios.get(`http://localhost:6060/api/v1/content/get/filter1/${category}/${subcategory}/${company_cate}`)
+            axios.get(` http://localhost:5000/api/v1/content/get/filter1/${category}/${subcategory}/${company_cate}`)
                 .then((res) => {
                     setContent(res?.data?.data);
                 });
@@ -70,7 +70,7 @@ function ContentGenerate() {
 
         if(select){
 
-            axios.post(`http://localhost:6060/api/v1/content/create/savecontent`,{
+            axios.post(` http://localhost:5000/api/v1/content/create/savecontent`,{
                 project,
                 content: value,
                 userEmail,

@@ -1,5 +1,5 @@
  
-const { createUsers, getUsers, getAllUsers, updateUsers, getSingleUsers } = require("../controllers/auth.controllers");
+const { createUsers, getUsers, getAllUsers, updateUsers, getSingleUsers, verifyAccount } = require("../controllers/auth.controllers");
 const verifyToken = require("../middleware/verifyToken");
 
 const router = require("express").Router();
@@ -9,6 +9,9 @@ router.route('/login').post(getUsers);
 router.route('/all').get(getAllUsers);
 router.route('/update').put(updateUsers);
 router.route('/single/:email').get(getSingleUsers);
+router.route('/verify/:confirmationToken').put(verifyAccount);
+
+ 
 
  
 

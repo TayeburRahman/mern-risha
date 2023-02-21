@@ -1,5 +1,5 @@
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import { Button, Grid, Paper } from '@mui/material'
+import { Button, Grid, Paper, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
@@ -28,7 +28,7 @@ function Subcategory() {
     console.log(userProject)
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/category/signal/${path?.categoryId}`)
+        axios.get(` http://localhost:5000/api/v1/category/signal/${path?.categoryId}`)
             .then((res) => {
                 setCategory(res?.data?.category);
                 setSubCategory(res.data?.subcategory?.find((data, idx) => idx === Number(path?.index)));
@@ -36,7 +36,7 @@ function Subcategory() {
     }, [path]);
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/project/user/category/${category}/${subcategory}/${user?.email}`)
+        axios.get(` http://localhost:5000/api/v1/project/user/category/${category}/${subcategory}/${user?.email}`)
             .then((res) => {
                 setUserProject(res?.data);
                 setUserProjectLength(res?.data?.length);
@@ -66,7 +66,7 @@ function Subcategory() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:6060/api/v1/project/user/delete/${id}`)
+                axios.delete(` http://localhost:5000/api/v1/project/user/delete/${id}`)
                     .then((response) => {
                         swalWithBootstrapButtons.fire(
                             'Deleted!',
@@ -166,7 +166,9 @@ function Subcategory() {
 
                                     </Grid>
                                 ) : (
-                                    ''
+                                    <Box className="box-shadow" p={5}>
+                                        <Typography>Project not available</Typography>
+                                    </Box>
                                 )
 
                                 }

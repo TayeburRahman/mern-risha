@@ -9,7 +9,7 @@ function ManageCompanySubCategory({ categoryDetails, subCategory, setState, stat
     const [coCategory, setCoCategory] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
+        axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
             .then((response) => {
                 setCoCategory(response.data);
             });
@@ -18,7 +18,7 @@ function ManageCompanySubCategory({ categoryDetails, subCategory, setState, stat
 
 
     const onDelete = async (id, data) => { 
-        axios.delete(`http://localhost:6060/api/v1/subcategory/company/sub/delete/${id}/${data}`)
+        axios.delete(` http://localhost:5000/api/v1/subcategory/company/sub/delete/${id}/${data}`)
             .then(res => {
                 if (res.status === 200) {
                     alert('successfully delete company sub category')

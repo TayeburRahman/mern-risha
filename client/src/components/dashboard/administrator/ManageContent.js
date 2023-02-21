@@ -16,7 +16,7 @@ function ManageContent() {
     const [state, setState] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/content/get/all`)
+        axios.get(` http://localhost:5000/api/v1/content/get/all`)
             .then((response) => {
                 setContent(response?.data)
             });
@@ -41,7 +41,7 @@ function ManageContent() {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`http://localhost:6060/api/v1/content/delete/${id}`)
+            axios.delete(` http://localhost:5000/api/v1/content/delete/${id}`)
             .then((response) => {
                 swalWithBootstrapButtons.fire(
                     'Deleted!',

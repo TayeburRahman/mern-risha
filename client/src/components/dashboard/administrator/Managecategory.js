@@ -28,7 +28,7 @@ function ManageCategory() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:6060/api/v1/category/all')
+        axios.get(' http://localhost:5000/api/v1/category/all')
             .then((response) => {
                 setCategory(response.data);
             });
@@ -65,7 +65,7 @@ function ManageCategory() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:6060/api/v1/category/delete/${id}`)
+                axios.delete(` http://localhost:5000/api/v1/category/delete/${id}`)
                 .then((response) => {
                     swalWithBootstrapButtons.fire(
                         'Deleted!',
@@ -126,7 +126,7 @@ function ManageCategory() {
                                             <Link to={`/dashboard/manage_category/${data._id}`} className="link-d">
                                                 <Box className='dp-flex justifyContent'>
                                                     <Box p={2}>
-                                                        <img className='fontSize-25' src={`http://localhost:6060/${data?.avatar}`} width="50px" height="50px" />
+                                                        <img className='fontSize-25' src={` http://localhost:5000/${data?.avatar}`} width="50px" height="50px" />
                                                     </Box>
                                                     <Box className='dp-grid text-left' >
                                                         <h6 className="number counter">{data?.tittle}</h6>

@@ -34,7 +34,7 @@ export default function EditModal({ openUpdate, setOpenUpdate,updateData, state,
     
      const onSubmit = (data) => { 
      const description = data?.description
-     axios.put(`http://localhost:6060/api/v1/category/update/${updateData?._id}`,  
+     axios.put(` http://localhost:5000/api/v1/category/update/${updateData?._id}`,  
         {
             description
         })

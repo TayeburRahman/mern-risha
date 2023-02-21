@@ -9,5 +9,5 @@ export default function PrivateRoute({children}){
     const local = localStorage.getItem('auth')  
     
 
-    return  local || isLoggedIn   ? children : <Navigate to='/login'/>
+    return  local || isLoggedIn   ? children : <Navigate to='/'/>
 }

@@ -33,7 +33,7 @@ function AddSubCategory({ open, setOpen, categoryDetails}) {
     
     const onSubmit = async (data) => {   
         // data.avatar = file 
-        axios.post(`http://localhost:6060/api/v1/category/sub/create/${categoryDetails?._id}`,  
+        axios.post(` http://localhost:5000/api/v1/category/sub/create/${categoryDetails?._id}`,  
         {
             tittle: data.tittle,
             description: data.description,

@@ -6,11 +6,11 @@ import { useForm } from 'react-hook-form';
 
 function AddProjectSubCategory({categoryDetails,subCategory,setState,state}) {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [coCategory, setCoCategory] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
+        axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
             .then((response) => {
                 setCoCategory(response.data);
             });
@@ -22,14 +22,15 @@ function AddProjectSubCategory({categoryDetails,subCategory,setState,state}) {
         let sub_cate = data?.inputData  
         let id = data?.inputType 
 
-        axios.post(`http://localhost:6060/api/v1/subcategory/company-c/sub`,  
+        axios.post(` http://localhost:5000/api/v1/subcategory/company-c/sub`,  
         { 
             id,
             sub_cate, 
         })
           .then(res =>{ 
              if(res.status === 200){ 
-                alert('successfully add new project sub category')
+                alert('successfully add company sub category')
+                reset()
                 setState(state? false: true)
              }  
           }).catch((err) => { 

@@ -37,7 +37,7 @@ export default function UpdateInput({ inputId, inputSingleData, open, setOpen, s
      const onSubmit = (data) => { 
      const newInputData = data?.inputData
  
-     axios.put(`http://localhost:6060/api/v1/subcategory/single/input/update/${inputId}`,  
+     axios.put(` http://localhost:5000/api/v1/subcategory/single/input/update/${inputId}`,  
         {
             inputData: inputSingleData,
             newInputData

@@ -31,7 +31,7 @@ function ManageSubCategory() {
     // console.log('subCategory', subCategory)
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/category/signal/${locationID.id}`)
+        axios.get(` http://localhost:5000/api/v1/category/signal/${locationID.id}`)
             .then((res) => {
                 setCategory(res?.data?.category);
                 setSubCategory(res.data?.subcategory);
@@ -67,7 +67,7 @@ function ManageSubCategory() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:6060/api/v1/category/subcategory/delete/${locationID?.id}/${tittle}`)
+                axios.delete(` http://localhost:5000/api/v1/category/subcategory/delete/${locationID?.id}/${tittle}`)
                 .then((response) => {
                     swalWithBootstrapButtons.fire(
                         'Deleted!',
@@ -130,7 +130,7 @@ function ManageSubCategory() {
                                             <Link to={`/dashboard/manage_category/sub_category/${locationID.id}/${idx}`} className="link-d" >
                                                 <Box className='dp-flex justifyContent'>
                                                     <Box p={2}>
-                                                        <img className='fontSize-25' src={`http://localhost:6060/${data?.avatar}`} width="50px" height="50px" />
+                                                        <img className='fontSize-25' src={` http://localhost:5000/${data?.avatar}`} width="50px" height="50px" />
                                                     </Box>
                                                     <Box className='dp-grid text-left'>
                                                         <h6 className="number counter">{data?.tittle}</h6>

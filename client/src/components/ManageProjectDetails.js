@@ -11,7 +11,7 @@ function ManageProjectDetails() {
  
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/project/single/${currentId.id}`)
+        axios.get(` http://localhost:5000/api/v1/project/single/${currentId.id}`)
             .then((res) => {
                 setProject(res?.data);
 
@@ -19,7 +19,7 @@ function ManageProjectDetails() {
     }, []);
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/subcategory/get/input/${project?.category}/${project?.subcategory}/${project?.company_cate}/${project?.com_sub_cate}`)
+        axios.get(` http://localhost:5000/api/v1/subcategory/get/input/${project?.category}/${project?.subcategory}/${project?.company_cate}/${project?.com_sub_cate}`)
             .then((response) => {
                 setInputData(response.data.input);
             });

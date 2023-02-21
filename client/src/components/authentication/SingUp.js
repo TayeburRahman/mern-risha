@@ -61,8 +61,8 @@ const SignUp = () => {
 
         if(userData?.status === 'success'){
         setLoading(false)
-         alert(`${userData?.user.email} Registration Success. Switching to Login User`)
-         navigate('/login');
+        //  alert(`${userData?.user.email} Registration Success. Switching to Login User`)
+         navigate('/signUp/verify');
        }
       }, userData , error);
      

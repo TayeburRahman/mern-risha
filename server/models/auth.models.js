@@ -51,8 +51,15 @@ const authModel = new mongoose.Schema(
 
             status:{
                 type: String,
-                default:"active",
+                default:"inactive",
                 enum:["active", "inactive"]
+            },
+            confirmationToken: {
+                type: String, 
+                trim: true,
+            },
+            confirmationTokenExpires: {
+                type: Date,  
             },
             passwordChangeAt:Date,
             passwordRestToken:String,

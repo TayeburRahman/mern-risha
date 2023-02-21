@@ -38,7 +38,7 @@ export default function UserEdit({ open, setOpen, user}) {
        
  
        if(user?.email && user?.userID){
-        axios.put(`http://localhost:6060/api/v1/users/update`,  
+        axios.put(` http://localhost:5000/api/v1/users/update`,  
         {
             email: user?.email,
             userID:user?.userID,

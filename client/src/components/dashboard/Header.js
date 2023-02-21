@@ -1,14 +1,8 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
-import Popover from '@mui/material/Popover';
 import Toolbar from '@mui/material/Toolbar';
-import Tooltip from '@mui/material/Tooltip';
-import { Box } from '@mui/system';
 import PropTypes from 'prop-types';
 import { Fragment, React, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -56,7 +50,7 @@ function Header(props) {
               </IconButton>
             </Grid>
             <Grid item xs />
-            <Grid item>
+            {/* <Grid item>
               <Link
                 href="/"
                 variant="body2"
@@ -101,7 +95,7 @@ function Header(props) {
                    className="button-25" role="button">LOG OUT</button>
                </Box>
               </Popover>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Toolbar>
       </AppBar>

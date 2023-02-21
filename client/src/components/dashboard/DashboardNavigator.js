@@ -1,6 +1,7 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import PersonIcon from '@mui/icons-material/Person';
 import { Box, Divider, ListItemButton } from '@mui/material';
@@ -15,7 +16,9 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { userLoggedOut } from '../../features/auth/authSlice';
 import './index.css';
 
 const categories = [
@@ -55,6 +58,7 @@ const itemCategory = {
 export default function DashboardNavigator(props) {
   const [category, setCategory] = React.useState()
   const { ...other } = props;
+ 
 
   const location = useLocation()
   let uri = location.pathname
@@ -65,11 +69,19 @@ export default function DashboardNavigator(props) {
 
 
   React.useEffect(() => {
-    axios.get('http://localhost:6060/api/v1/category/all')
+    axios.get(' http://localhost:5000/api/v1/category/all')
       .then((response) => {
         setCategory(response.data);
       });
-  }, []);
+  }, [category]);
+
+
+  const dispatch = useDispatch()
+
+  const logOut = () =>{
+    dispatch(userLoggedOut()) 
+    localStorage.clear()
+  }
 
 
 
@@ -154,6 +166,9 @@ export default function DashboardNavigator(props) {
             </Link>
           </ListItem>
         </AccordionDetails>
+       <Box mt={5}>
+       <button class="button-13" role="button" onClick={ logOut }> <LogoutIcon/> Log Out</button>
+       </Box>
 
         <Divider sx={{ mt: 2 }} />
       </List>

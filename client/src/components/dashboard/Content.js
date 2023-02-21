@@ -32,14 +32,14 @@ export default function Content() {
  
   
   useEffect(() => {
-    axios.get('http://localhost:6060/api/v1/category/all')
+    axios.get(' http://localhost:5000/api/v1/category/all')
       .then((response) => {
         setCategory(response.data);
       });
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:6060/api/v1/category/subcategory/${categoryState}`)
+    axios.get(` http://localhost:5000/api/v1/category/subcategory/${categoryState}`)
       .then((response) => {
         setSubCategory(response?.data?.category?.subCategory)
       });
@@ -47,7 +47,7 @@ export default function Content() {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:6060/api/v1/subcategory/get/${categoryState}/${subcategoryState}`)
+    axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryState}/${subcategoryState}`)
         .then((response) => {
             setCompanyCategory(response.data); 
         });
@@ -56,7 +56,7 @@ export default function Content() {
 
 
 useEffect(() => {
-  axios.get(`http://localhost:6060/api/v1/subcategory/company-sub/${categoryState}/${subcategoryState}/${companyState}`, {
+  axios.get(` http://localhost:5000/api/v1/subcategory/company-sub/${categoryState}/${subcategoryState}/${companyState}`, {
     company_cate: companyState,
     category: categoryState,
     subcategory: subcategoryState,
@@ -95,7 +95,7 @@ const handleSubCategory = (event) => {
     // const name = event.target.name;
     const value = event.target.value;
     setCompanyState(value)   
-    axios.get(`http://localhost:6060/api/v1/content/get/filter1/${categoryState}/${subcategoryState}/${value}`)
+    axios.get(` http://localhost:5000/api/v1/content/get/filter1/${categoryState}/${subcategoryState}/${value}`)
     .then(res =>{  
       setFilterContent(res?.data)
      })   
@@ -106,21 +106,22 @@ const handleSubCategory = (event) => {
 const handleCompanySubCategory = (event) => { 
   const value = event.target.value;
   setCompanySubState(value)    
-  axios.get(`http://localhost:6060/api/v1/content/get/filter2/${categoryState}/${subcategoryState}/${companyState}/${value}`)
+  axios.get(` http://localhost:5000/api/v1/content/get/filter2/${categoryState}/${subcategoryState}/${companyState}/${value}`)
   .then(res =>{    
       setFilterContent(res?.data) 
    })   
 };
 
 const handleCreateButton = () =>{
-  axios.post('http://localhost:6060/api/v1/content/create', {
+  axios.post(' http://localhost:5000/api/v1/content/create', {
     category: categoryState,
     subcategory: subcategoryState,
     company_cate: companyState,
     com_sub_cate: companySubState,
     content: value
   }) .then((response) => {
-    console.log('response',response);
+    alert("Content added successfully")
+    setValue('')
 });
 }
 

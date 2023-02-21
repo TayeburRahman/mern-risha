@@ -15,7 +15,7 @@ function UserProfile() {
 
     useEffect(() => {
         let email = auth?.user?.email
-        axios.get(`http://localhost:6060/api/v1/users/single/${email}`)
+        axios.get(` http://localhost:5000/api/v1/users/single/${email}`)
             .then((res) => {
                 setUser(res?.data);
             });
@@ -23,7 +23,7 @@ function UserProfile() {
 
     useEffect(() => {
         let email = auth?.user?.email
-        axios.get(`http://localhost:6060/api/v1/project/user/${email}`)
+        axios.get(` http://localhost:5000/api/v1/project/user/${email}`)
             .then((res) => {
                 setProject(res?.data);
             });

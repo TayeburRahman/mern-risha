@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import SignIn from './components/authentication/SingIn';
 import SignUp from './components/authentication/SingUp';
+import SingUpEmailChecker from './components/authentication/SingUpEmailChecker';
 import ManageCategory from './components/dashboard/administrator/Managecategory';
 import ManageContent from './components/dashboard/administrator/ManageContent';
 import ManageProject from './components/dashboard/administrator/ManageProject';
@@ -28,9 +29,10 @@ function App() {
    return (
       <div className="App">
          <Routes>
+            <Route path="/" element={<Home />} /> 
             <Route path="/login" element={<SignIn />} />
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/signUp" element={<SignUp />} /> 
+            <Route path="/signUp/verify" element={<SingUpEmailChecker />} />
 
             <Route path="dashboard" element={
                <PrivateRoute>

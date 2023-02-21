@@ -6,13 +6,13 @@ import { useForm } from 'react-hook-form';
 
 function AddProjectCategory({categoryDetails,subCategory,setState, state}) {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset} = useForm();
 
     const onSubmit = async (data) => { 
 
        let companyCategory = await data?.companyCategory  
 
-        axios.post(`http://localhost:6060/api/v1/subcategory/company-c`,  
+        axios.post(` http://localhost:5000/api/v1/subcategory/company-c`,  
         {
             category: categoryDetails?.tittle,
             subcategory: subCategory?.tittle,
@@ -21,6 +21,7 @@ function AddProjectCategory({categoryDetails,subCategory,setState, state}) {
           .then(res =>{ 
              if(res.status === 200){ 
                 alert('successfully add new project category')
+                reset();
                 setState(state? false: true)
              }  
           }).catch((err) => { 

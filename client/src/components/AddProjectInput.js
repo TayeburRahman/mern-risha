@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 
 function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [coCategory, setCoCategory] = useState([])
     const [coSubCategory, setCoSubCategory] = useState([])
     const [selectCategory, setSelectCategory] = useState('')
     const [selectSubCategory, setSelectSubCategory] = useState('')
 
     useEffect(() => {
-        axios.get(`http://localhost:6060/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
+        axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
             .then((response) => {
                 setCoCategory(response.data);
                 // setCoSubCategory(response.data.com_sub_cate)
@@ -24,7 +24,7 @@ function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
         const category = categoryDetails?.tittle
         const subcategory = subCategory?.tittle
         setSelectCategory(company_cate)
-        axios.get(`http://localhost:6060/api/v1/subcategory/company-sub/${category}/${subcategory}/${company_cate}`, {
+        axios.get(` http://localhost:5000/api/v1/subcategory/company-sub/${category}/${subcategory}/${company_cate}`, {
             company_cate,
             category,
             subcategory,
@@ -49,7 +49,7 @@ function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
         const subcategory = subCategory?.tittle
         const input = data 
         
-            axios.post(`http://localhost:6060/api/v1/subcategory/create/company-sub/input`,
+            axios.post(` http://localhost:5000/api/v1/subcategory/create/company-sub/input`,
             {
                 company_cate,
                 com_sub_cate,
@@ -60,6 +60,7 @@ function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
             .then(res => {
                 if (res.status === 200) {
                     alert('successfully add new from input for sub category')
+                    reset()
                     setState(state ? false : true)
                 }
             })

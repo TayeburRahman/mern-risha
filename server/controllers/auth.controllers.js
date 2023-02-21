@@ -2,6 +2,7 @@
 const { generateToken } = require("../utils/token");
 let bcrypt = require("bcryptjs");
 const authModel = require("../models/auth.models");
+const { sendMailWithGmail } = require("../utils/Email");
 
 
 
@@ -10,18 +11,54 @@ const createUsers = async (req, res) => {
 
 
   try {
-    const newUser = req.body
+    const {fastname, lastname, familyName, username, password, userID , email  } = req.body
 
-    const ExistingUser = await authModel.findOne({
+ 
+    const ExistingUser = await authModel.findOne({ $and: [{ email: req.body.email }, { status: "active" }] });
+ 
+
+    if (ExistingUser) { 
+      return res.json({ status: "error", message: `${req.body.email} already register` });
+    }
+
+    const confirmationToken = Math.floor(Math.random() * 123456) + 111
+    const date = new Date()
+    date.setDate(date.getDate() + 1)
+
+    console.log(fastname, lastname, familyName, username, password, userID , email )
+
+    // newUser?.confirmationToken = token
+ 
+    const mailData = {
+      to: req.body.email,
+      subject: 'Verify your account',
+      text1: 'Verify your email to sign up for Rishati',
+      text2:"Please use the OTP below to login to your account. It is only valid for 10 minutes.",
+      token: confirmationToken
+    }
+
+    sendMailWithGmail(mailData)
+
+ 
+    const hashPassword = bcrypt.hashSync(password); 
+
+    const ExistingEmail = await authModel.findOne({
       email: req.body.email
     });
 
-    if (ExistingUser) {
+    if (ExistingEmail) { 
+      const user = await authModel.updateOne({email: req.body.email}, {$set:{fastname, lastname, familyName, username, password: hashPassword, confirmationToken }})  
 
-      return res.json({ status: "error", message: `${req.body.email} already exists` });
+      return res.status(200).json({
+        user,
+        status: "success",
+        message: 'User register success'
+      });
     }
 
-    const user = await authModel.create(newUser)
+
+
+    const user = await authModel.create({fastname, lastname, familyName, username, password, userID , email, password: hashPassword, confirmationToken})
 
     return res.status(200).json({
       user,
@@ -33,6 +70,40 @@ const createUsers = async (req, res) => {
     return res.status(500).json({ status: "error", message: error })
   }
 }
+
+
+
+const verifyAccount = async (req, res) => {
+  try {
+    const { confirmationToken } = req.params 
+
+    console.log("confirmationToken", confirmationToken)
+ 
+    const user = await authModel.findOne({
+      confirmationToken
+    });
+
+    const email = await user?.email
+
+    
+
+    if(email){
+      const updateUser = await authModel.updateOne({email}, {$set:{status: "active", confirmationToken: ''}})
+     
+      return res.status(200).json({
+        updateUser,
+        status: "success",
+        message: 'Your account verify  successfully'
+      });
+
+    }
+
+    return res.status(201).send(user)
+  } catch (error) {
+    return res.status(401).json({ status: "error", message: error.massages })
+  }
+}
+
 
 
 /**
@@ -183,4 +254,4 @@ const getAllUsers = async (req, res) => {
 
 
 
-module.exports = { createUsers, getUsers, getAllUsers, updateUsers,getSingleUsers }
+module.exports = { createUsers, getUsers, getAllUsers, updateUsers,getSingleUsers, verifyAccount }

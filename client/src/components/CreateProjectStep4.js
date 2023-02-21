@@ -17,12 +17,12 @@ function CreateProjectStep4({ company_cate, com_sub_cate, subcategory, category,
 
     useEffect(() => {
         if(com_sub_cate){
-            axios.get(`http://localhost:6060/api/v1/project/single/${category}/${subcategory}/${company_cate}/${com_sub_cate}/${user_email}`)
+            axios.get(` http://localhost:5000/api/v1/project/single/${category}/${subcategory}/${company_cate}/${com_sub_cate}/${user_email}`)
             .then((response) => {
                 setProjectData(response.data);
             });
         }else{
-            axios.get(`http://localhost:6060/api/v1/project/single/${category}/${subcategory}/${company_cate}/${user_email}`)
+            axios.get(` http://localhost:5000/api/v1/project/single/${category}/${subcategory}/${company_cate}/${user_email}`)
             .then((response) => {
                 setProjectData(response.data);
             });

@@ -37,7 +37,7 @@ export default function UpdateContent({ open, setOpen, updateData, state}) {
       
     const handleUpdateButton = async (data) => {   
         
-        axios.put(`http://localhost:6060/api/v1/content/update/${updateData?._id}`,  
+        axios.put(` http://localhost:5000/api/v1/content/update/${updateData?._id}`,  
         {
             content: value
         })
