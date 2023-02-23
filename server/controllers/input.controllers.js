@@ -93,11 +93,13 @@ const  getProjectAllSubInput = async (req, res) => {
 
 const  getProjectInput = async (req, res) => {
   try {
-    const category = req.params.category
-    const subcategory = req.params.subcategory  
-    const company_cate = req.params.company_cate  
-    const com_sub_cate = req.params.com_sub_cate 
-    const company = await projectInputModel.findOne({ $and: [{ category }, { subcategory }, {company_cate}, {com_sub_cate}] }) 
+    const category = req.body.category
+    const subcategory = req.body?.subcategory  
+    const company_cate = req.body?.company_cate  
+    const com_sub_cate = req.body?.com_sub_cate 
+
+  
+    const company = await projectInputModel.findOne({ $and: [{ category }, { subcategory }, {company_cate}, {com_sub_cate}] })  
 
     return res.status(201).send(company)
   } catch (error) {
@@ -154,9 +156,7 @@ const updateSignalInput = async (req, res ) => {
 const deleteSignalInput  = async (req, res ) => {  
   try { 
     const id = req.params.id   
-    const inputData = req.body.inputData  
-     
- 
+    const inputData = req.body.inputData   
 
          const response = await projectInputModel.findOneAndUpdate(
             { _id: id },
@@ -169,11 +169,7 @@ const deleteSignalInput  = async (req, res ) => {
             },
             { returnOriginal: false }
         );
-
-
-
-     
- 
+  
    return res.status(200).json({ 
     response,
     status: "success", 
@@ -193,8 +189,9 @@ const  getProjectInputC = async (req, res) => {
     const subcategory = req.params.subcategory  
     const company_cate = req.params.company_cate   
     const com_sub_cate = ""
- 
-    console.log('category',category, subcategory, company_cate, '',com_sub_cate)
+
+    console.log(category, subcategory, company_cate, com_sub_cate)
+  
 
     const company = await projectInputModel.findOne({ $and: [{ category }, { subcategory }, {company_cate}, {com_sub_cate}] }) 
   

@@ -8,7 +8,7 @@ function ManageProject() {
     const [project, setProject] = useState([]);
 
     useEffect(() => {
-        axios.get(' http://localhost:5000/api/v1/project/get')
+        axios.get(' https://server1.rishati.com/api/v1/project/get')
             .then((response) => {
                 setProject(response.data);
             });

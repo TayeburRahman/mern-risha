@@ -28,6 +28,7 @@
 
 .justifyContent {
   justify-content: space-around !important;
+  text-decoration: none;
 }
 .fontSize-40 {
   font-size: 40px !important;

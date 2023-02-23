@@ -71,14 +71,14 @@ const authModel = new mongoose.Schema(
     );
 
     // Password hash by bcrypt 
-    authModel.pre("save", function (next) {
-        const password= this.password;
+    // authModel.pre("save", function (next) {
+    //     const password= this.password;
 
-        const hashPassword = bcrypt.hashSync(password);
+    //     const hashPassword = bcrypt.hashSync(password);
 
-        this.password = hashPassword; 
-        next();
-    })
+    //     this.password = hashPassword; 
+    //     next();
+    // })
 
  
      

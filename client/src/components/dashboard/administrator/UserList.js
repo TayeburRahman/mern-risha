@@ -15,7 +15,7 @@ function UserList() {
     const [users, setAllUsers] =  useState([])
 
     useEffect(()=>{ 
-        axios.get(' http://localhost:5000/api/v1/users/all')
+        axios.get(' https://server1.rishati.com/api/v1/users/all')
           .then(response => { 
            setAllUsers(response?.data)
            }); 

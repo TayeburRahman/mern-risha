@@ -61,15 +61,14 @@ export default function DashboardNavigator(props) {
  
 
   const location = useLocation()
-  let uri = location.pathname
-  console.log(uri)
+  let uri = location.pathname 
 
   let auth = JSON.parse(localStorage.getItem('auth')) 
   const admin = auth?.user?.role === 'admin' 
 
 
   React.useEffect(() => {
-    axios.get(' http://localhost:5000/api/v1/category/all')
+    axios.get(' https://server1.rishati.com/api/v1/category/all')
       .then((response) => {
         setCategory(response.data);
       });

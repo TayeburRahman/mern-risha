@@ -28,9 +28,24 @@ const createSaveContent = async (req, res ) => {
 
 const getUserContent = async (req, res) => {  
     try { 
-     const content = await  saveContentModels.find({})  
+      const {email, id} = req.params   
+ 
 
-      return res.status(201).send(content) 
+      const response = await saveContentModels.findOne(
+        { userEmail: email },
+        {
+            $pull: {
+              project: {
+                _id: id,
+                },
+            },
+        },
+        { returnOriginal: false }
+    );
+
+    console.log("response",response)
+
+      return res.status(201).send(response) 
      } catch (error) {
       return res.status(401).json({status: "error", message: error.massages})
     }
@@ -48,23 +63,8 @@ const getUserContent = async (req, res) => {
     }
 }
  
-
-//   const updateUsers= async (req , res) => {
-    
-//   try {
-//        await userModel.updateOne({
-//          email: req.params.email
-//         },
-//           req.body
-//       );
-//       res.status(201).json({massages:'Card Updated Successfully'});
-//   } catch (error) {
-//       return res
-//           .status(500).json({massages: error.massages}) 
-//   }
-// };
-
+ 
 
  
  
-  module.exports={  createSaveContent }
+  module.exports={  createSaveContent,getUserContent }

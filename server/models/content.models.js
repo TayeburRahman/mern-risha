@@ -24,10 +24,37 @@ const contentModel = new mongoose.Schema(
                 type: String,  
                 trim: true,
             },
-            content:{
+            inputValue0:{
                 type: String,   
                 required: [true, "Content is require"],
             },  
+            inputValue1:{
+                type: String,    
+            },  
+            inputValue2:{
+                type: String,    
+            },  
+            inputValue3:{
+                type: String,    
+            },  
+            inputValue4:{
+                type: String,    
+            },  
+            inputValue5:{
+                type: String,    
+            },  
+            inputValue6:{
+                type: String,    
+            },  
+            inputValue7:{
+                type: String,    
+            },
+            inputValue8:{
+                type: String,    
+            },
+            inputValueEnd:{
+                type: String,    
+            }, 
         },
         {
              timestamps: true, 

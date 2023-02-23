@@ -35,7 +35,7 @@ export default function UpdateSubcategory({ openUpdate, setOpenUpdate,updateData
     
      const onSubmit = (data) => { 
      const description = data?.description
-     axios.put(` http://localhost:5000/api/v1/category/subcategory/update/${categoryDetails?._id}/${updateData?.tittle}`,  
+     axios.put(` https://server1.rishati.com/api/v1/category/subcategory/update/${categoryDetails?._id}/${updateData?.tittle}`,  
         {
             description
         })

@@ -14,7 +14,7 @@ router.route('/create/company/input').post(createProjectInput);
 router.route('/input/delete/:id').delete(deleteInputArray);
 router.route('/get/input/:category/:subcategory').get(getProjectAllSubInput);
 router.route('/get/input-c/:category/:subcategory/:company_cate').get(getProjectInputC);
-router.route('/get/input/:category/:subcategory/:company_cate/:com_sub_cate').get(getProjectInput);
+router.route('/get/input').put(getProjectInput);
 router.route('/single/input/update/:id').put(updateSignalInput);
 router.route('/single/input/delete/:id').put(deleteSignalInput);
 

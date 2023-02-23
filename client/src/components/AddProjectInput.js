@@ -12,7 +12,7 @@ function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
     const [selectSubCategory, setSelectSubCategory] = useState('')
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
             .then((response) => {
                 setCoCategory(response.data);
                 // setCoSubCategory(response.data.com_sub_cate)
@@ -24,7 +24,7 @@ function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
         const category = categoryDetails?.tittle
         const subcategory = subCategory?.tittle
         setSelectCategory(company_cate)
-        axios.get(` http://localhost:5000/api/v1/subcategory/company-sub/${category}/${subcategory}/${company_cate}`, {
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/company-sub/${category}/${subcategory}/${company_cate}`, {
             company_cate,
             category,
             subcategory,
@@ -49,7 +49,7 @@ function AddProjectInput({ categoryDetails, subCategory, setState, state }) {
         const subcategory = subCategory?.tittle
         const input = data 
         
-            axios.post(` http://localhost:5000/api/v1/subcategory/create/company-sub/input`,
+            axios.post(` https://server1.rishati.com/api/v1/subcategory/create/company-sub/input`,
             {
                 company_cate,
                 com_sub_cate,

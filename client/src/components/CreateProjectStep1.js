@@ -11,7 +11,7 @@ function CreateProjectStep1({ category, subcategory, setSelectSubCategory, setSe
     const path = useParams()
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/subcategory/get/${category}/${subcategory}`)
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/get/${category}/${subcategory}`)
             .then((response) => {
                 setCoCategory(response.data);
             });
@@ -21,7 +21,7 @@ function CreateProjectStep1({ category, subcategory, setSelectSubCategory, setSe
     const handleChange = (event) => {
         const company_cate = event.target.value
         setSelectCategory(company_cate)
-        axios.get(` http://localhost:5000/api/v1/subcategory/company-sub/${category}/${subcategory}/${company_cate}`,
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/company-sub/${category}/${subcategory}/${company_cate}`,
             {
                 company_cate,
                 category,

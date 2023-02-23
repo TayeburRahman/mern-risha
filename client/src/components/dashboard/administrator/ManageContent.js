@@ -16,7 +16,7 @@ function ManageContent() {
     const [state, setState] = useState(null)
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/content/get/all`)
+        axios.get(` https://server1.rishati.com/api/v1/content/get/all`)
             .then((response) => {
                 setContent(response?.data)
             });
@@ -41,7 +41,7 @@ function ManageContent() {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(` http://localhost:5000/api/v1/content/delete/${id}`)
+            axios.delete(` https://server1.rishati.com/api/v1/content/delete/${id}`)
             .then((response) => {
                 swalWithBootstrapButtons.fire(
                     'Deleted!',
@@ -70,7 +70,7 @@ function ManageContent() {
                 <Grid p={5}>
                     {
                         isContent && isContent?.map((data,idx) => (
-                            <Grid key={idx}>
+                            <Grid key={idx} className="box-shadow" p={2} mb={2}>
                                 <Grid container >
                                     <Grid container item sm={12} md={8} lg={8}   >
                                         <Box className="" pr={5}>

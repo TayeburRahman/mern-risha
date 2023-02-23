@@ -30,7 +30,7 @@ export default function AddCategory({ open, setOpen }) {
 
     
     const onSubmit = async (data) => {   
-        axios.post(' http://localhost:5000/api/v1/category/create',  
+        axios.post(' https://server1.rishati.com/api/v1/category/create',  
         {
             tittle: data.tittle,
             description: data.description,

@@ -133,21 +133,6 @@ const getCoSingleCaAllSubCategory = async (req, res) => {
     return res.status(401).json({ status: "error", message: error.massages })
   }
 }
-
-
-
-// const getCompanyCategory = async (req, res) => {
-//   try {
-//     const category = req.params.category
-//     const subcategory = req.params.subcategory
-//     console.log(req.params)
-//     const input = await subcategoryModels.find({ $and: [{ category }, { subcategory }] })
-//     return res.status(201).send(input.input)
-//   } catch (error) {
-//     return res.status(401).json({ status: "error", message: error.massages })
-//   }
-// }
-
  
 
 

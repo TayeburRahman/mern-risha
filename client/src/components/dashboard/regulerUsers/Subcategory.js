@@ -28,7 +28,7 @@ function Subcategory() {
     console.log(userProject)
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/category/signal/${path?.categoryId}`)
+        axios.get(` https://server1.rishati.com/api/v1/category/signal/${path?.categoryId}`)
             .then((res) => {
                 setCategory(res?.data?.category);
                 setSubCategory(res.data?.subcategory?.find((data, idx) => idx === Number(path?.index)));
@@ -36,7 +36,7 @@ function Subcategory() {
     }, [path]);
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/project/user/category/${category}/${subcategory}/${user?.email}`)
+        axios.get(` https://server1.rishati.com/api/v1/project/user/category/${category}/${subcategory}/${user?.email}`)
             .then((res) => {
                 setUserProject(res?.data);
                 setUserProjectLength(res?.data?.length);
@@ -66,7 +66,7 @@ function Subcategory() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(` http://localhost:5000/api/v1/project/user/delete/${id}`)
+                axios.delete(` https://server1.rishati.com/api/v1/project/user/delete/${id}`)
                     .then((response) => {
                         swalWithBootstrapButtons.fire(
                             'Deleted!',

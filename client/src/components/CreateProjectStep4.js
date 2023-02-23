@@ -8,7 +8,7 @@ import { CirclesWithBar } from "react-loader-spinner";
 import { Link } from 'react-router-dom';
 import './projectstep.css';
 
-function CreateProjectStep4({ company_cate, com_sub_cate, subcategory, category, projectName }) {
+function CreateProjectStep4({ company_cate, com_sub_cate, subcategory, category, projectName, projectServerReq }) {
 
     const [projectdata, setProjectData] = useState()
 
@@ -17,17 +17,19 @@ function CreateProjectStep4({ company_cate, com_sub_cate, subcategory, category,
 
     useEffect(() => {
         if(com_sub_cate){
-            axios.get(` http://localhost:5000/api/v1/project/single/${category}/${subcategory}/${company_cate}/${com_sub_cate}/${user_email}`)
+            axios.get(` https://server1.rishati.com/api/v1/project/single/${category}/${subcategory}/${company_cate}/${com_sub_cate}/${user_email}`)
             .then((response) => {
                 setProjectData(response.data);
             });
         }else{
-            axios.get(` http://localhost:5000/api/v1/project/single/${category}/${subcategory}/${company_cate}/${user_email}`)
+            axios.get(` https://server1.rishati.com/api/v1/project/single/${category}/${subcategory}/${company_cate}/${user_email}`)
             .then((response) => {
                 setProjectData(response.data);
             });
         }
-    }, [projectName, category, subcategory, company_cate]);
+    }, [projectServerReq]);
+
+    console.log('projectServerReq', projectServerReq) 
  
 
     return (

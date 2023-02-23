@@ -11,7 +11,7 @@ function ManageCompanyCategory({categoryDetails,subCategory,setState,state}) {
     const [coCategory, setCoCategory] = useState([])
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
             .then((response) => {
                 setCoCategory(response.data);
             });
@@ -22,7 +22,7 @@ function ManageCompanyCategory({categoryDetails,subCategory,setState,state}) {
     const onDelete = async (id) => {   
     
 
-        axios.delete(` http://localhost:5000/api/v1/subcategory/company/category/delete/${id}`)   
+        axios.delete(` https://server1.rishati.com/api/v1/subcategory/company/category/delete/${id}`)   
           .then(res =>{ 
              if(res.status === 200){ 
                 alert('successfully delete company category')

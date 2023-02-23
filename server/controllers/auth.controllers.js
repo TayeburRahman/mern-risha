@@ -1,8 +1,9 @@
 
 const { generateToken } = require("../utils/token");
 let bcrypt = require("bcryptjs");
-const authModel = require("../models/auth.models");
-const { sendMailWithGmail } = require("../utils/Email");
+const authModel = require("../models/auth.models"); 
+const { sendMailWithGmail } = require("../utils/email");
+// const { sendMailWithGmail } = require("../utils/Email");
 
 
 

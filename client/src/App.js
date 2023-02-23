@@ -16,6 +16,7 @@ import ContentGenerate from './components/dashboard/regulerUsers/ContentGenerate
 import CreateProject from './components/dashboard/regulerUsers/CreateProject';
 import Subcategory from './components/dashboard/regulerUsers/Subcategory';
 import UserProfile from './components/dashboard/regulerUsers/UserProfile';
+import UserProject from './components/dashboard/regulerUsers/UserProject';
 import ManageProjectDetails from './components/ManageProjectDetails';
 import Home from './components/pages/Home';
 import useAuthCheck from './hooks/useAuthCheck';
@@ -29,9 +30,9 @@ function App() {
    return (
       <div className="App">
          <Routes>
-            <Route path="/" element={<Home />} /> 
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<SignIn />} />
-            <Route path="/signUp" element={<SignUp />} /> 
+            <Route path="/signUp" element={<SignUp />} />
             <Route path="/signUp/verify" element={<SingUpEmailChecker />} />
 
             <Route path="dashboard" element={
@@ -45,25 +46,25 @@ function App() {
                   </PrivateRoute>
                } />
                <Route path='sub_category/:categoryId/:index' element={
-                <PrivateRoute>
-                  <Subcategory />
-                </PrivateRoute>
-                } 
+                  <PrivateRoute>
+                     <Subcategory />
+                  </PrivateRoute>
+               }
                />
                <Route path='sub_category/:categoryId/:index/create_project' element={
-                <PrivateRoute> 
-               <CreateProject />
-               </PrivateRoute>
+                  <PrivateRoute>
+                     <CreateProject />
+                  </PrivateRoute>
                } />
                <Route path='content_generate/:id' element={
-               <PrivateRoute> 
-               <ContentGenerate />
-               </PrivateRoute>} />
+                  <PrivateRoute>
+                     <ContentGenerate />
+                  </PrivateRoute>} />
                <Route path='write_content' element={
-                   <AdminRoute> 
-               <Content />
-               </AdminRoute>
-               } 
+                  <AdminRoute>
+                     <Content />
+                  </AdminRoute>
+               }
                />
                <Route path='manage_category' element={
                   <AdminRoute>
@@ -98,7 +99,7 @@ function App() {
                      <ManageProjectDetails />
                   </AdminRoute>
                } />
-                 <Route path='manage_content' element={
+               <Route path='manage_content' element={
                   <AdminRoute>
                      <ManageContent />
                   </AdminRoute>
@@ -109,6 +110,14 @@ function App() {
                      <UserProfile />
                   </PrivateRoute>
                } />
+
+               <Route path='profile/project/:id' element={
+                   <PrivateRoute>
+                     <UserProject />
+                  </PrivateRoute>
+               } />
+
+
 
             </Route>
          </Routes>

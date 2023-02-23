@@ -15,3 +15,17 @@ code {
 button.swal2-cancel.btn.btn-danger {
   margin: 10px !important;
 }
+
+.css-u7qq7e {
+  padding: 0 !important;
+}
+
+.MuiBackdrop-root.MuiModal-backdrop.css-919eu4 {
+  background-color: rgb(0 0 0 / 3%);
+}
+.MuiBox-root.css-105qr5e {
+  box-shadow: none;
+}
+.MuiAccordionDetails-root.css-u7qq7e {
+  padding: 0 !important;
+}

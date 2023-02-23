@@ -10,7 +10,7 @@ function AddProjectSubCategory({categoryDetails,subCategory,setState,state}) {
     const [coCategory, setCoCategory] = useState([])
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/get/${categoryDetails?.tittle}/${subCategory?.tittle}`)
             .then((response) => {
                 setCoCategory(response.data);
             });
@@ -22,7 +22,7 @@ function AddProjectSubCategory({categoryDetails,subCategory,setState,state}) {
         let sub_cate = data?.inputData  
         let id = data?.inputType 
 
-        axios.post(` http://localhost:5000/api/v1/subcategory/company-c/sub`,  
+        axios.post(` https://server1.rishati.com/api/v1/subcategory/company-c/sub`,  
         { 
             id,
             sub_cate, 

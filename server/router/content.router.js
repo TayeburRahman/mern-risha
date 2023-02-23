@@ -1,5 +1,5 @@
 const { createContent, updateContent, deleteContent, getContent, getAllContent } = require("../controllers/content.controllers");
-const { createSaveContent } = require("../controllers/saveContent.controllers");
+const { createSaveContent, getUserContent } = require("../controllers/saveContent.controllers");
 
  
 
@@ -14,5 +14,7 @@ router.route('/delete/:id').delete(deleteContent);
 
 // save users content 
 router.route('/create/savecontent').post(createSaveContent);  
+router.route('/get/savecontent/:id/:email').get(getUserContent);  
+ 
 
 module.exports = router;

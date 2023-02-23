@@ -8,21 +8,34 @@ function ManageProjectDetails() {
     const currentId = useParams()
     const [project, setProject] = useState();
     const [inputData, setInputData] = useState();
+    const [company_cate, setCompany_cate] = useState();
+    const [com_sub_cate, setCom_sub_cate] = useState();
+    const [category, setCategory] = useState();
+    const [subcategory, setSubcategory] = useState();
  
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/project/single/${currentId.id}`)
-            .then((res) => {
+        axios.get(` https://server1.rishati.com/api/v1/project/single/${currentId.id}`)
+            .then((res) => { 
                 setProject(res?.data);
+                setCategory(res?.data?.category)
+                setSubcategory(res?.data?.subcategory)
+                setCompany_cate(res?.data?.company_cate)
+                setCom_sub_cate(res?.data?.com_sub_cate)
 
             });
     }, []);
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/subcategory/get/input/${project?.category}/${project?.subcategory}/${project?.company_cate}/${project?.com_sub_cate}`)
-            .then((response) => {
-                setInputData(response.data.input);
-            });
+        axios.put(`http://localhost:5000/api/v1/subcategory/get/input`,{
+            category,
+            company_cate,
+            com_sub_cate,
+            subcategory
+       })
+           .then((response) => {
+               setInputData(response.data.input);
+           }); 
     }, [project]);
 
 

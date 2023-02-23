@@ -23,7 +23,7 @@ function SingUpEmailChecker() {
     const onSubmit = async (data) => {
         setLoading(true)
         const confirmationToken = data?.confirmationToken
-        axios.put(`http://localhost:5000/api/v1/users/verify/${confirmationToken}`)
+        axios.put(`https://server1.rishati.com/api/v1/users/verify/${confirmationToken}`)
             .then(res => {
                 if (res.status === 200) {
                     setOpen(true);

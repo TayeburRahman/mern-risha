@@ -31,7 +31,7 @@ function SingleSubCategory() {
     const subcategory = subCategory?.tittle
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/category/signal/${path?.categoryId}`)
+        axios.get(` https://server1.rishati.com/api/v1/category/signal/${path?.categoryId}`)
             .then((res) => {
                 setCategory(res?.data?.category);
                 setSubCategory(res.data?.subcategory?.find((data, idx) => idx === Number(path?.index)));
@@ -39,7 +39,7 @@ function SingleSubCategory() {
     }, [path]);
 
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/subcategory/get/input/${category}/${subcategory}`)
+        axios.get(` https://server1.rishati.com/api/v1/subcategory/get/input/${category}/${subcategory}`)
             .then((response) => {
                 setInputData(response.data);
             });
@@ -65,7 +65,7 @@ function SingleSubCategory() {
     }
 
     const onDelete = async (id) => { 
-        axios.delete(` http://localhost:5000/api/v1/subcategory/input/delete/${id}`)
+        axios.delete(` https://server1.rishati.com/api/v1/subcategory/input/delete/${id}`)
             .then(res => {
                 if (res.status === 200) {
                     alert('successfully delete company category')
@@ -78,7 +78,7 @@ function SingleSubCategory() {
 
     const onDeleteInput = async (id, inputData) => { 
  
-        axios.put(` http://localhost:5000/api/v1/subcategory/single/input/delete/${id}`,{
+        axios.put(` https://server1.rishati.com/api/v1/subcategory/single/input/delete/${id}`,{
             inputData
         })
             .then(res => {

@@ -1,5 +1,5 @@
 .text-left {
-  align-items: left;
+  align-items: left !important;
 }
 
 .input-selector {

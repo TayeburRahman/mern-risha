@@ -44,12 +44,12 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
 
     useEffect(() => {
         if(selectSubCategory){
-            axios.get(` http://localhost:5000/api/v1/subcategory/get/input/${category}/${subcategory}/${selectCategory}/${selectSubCategory}`)
+            axios.get(` https://server1.rishati.com/api/v1/subcategory/get/input/${category}/${subcategory}/${selectCategory}/${selectSubCategory}`)
             .then((response) => {
                 setInputData(response.data.input);
             }); 
         }else {
-            axios.get(` http://localhost:5000/api/v1/subcategory/get/input-c/${category}/${subcategory}/${selectCategory}`)
+            axios.get(` https://server1.rishati.com/api/v1/subcategory/get/input-c/${category}/${subcategory}/${selectCategory}`)
             .then((response) => {
                 setInputData(response.data.input);
             }); 
@@ -79,7 +79,7 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
 
         if(activeStep === 2){
             
-            axios.post(` http://localhost:5000/api/v1/project/create`,  
+            axios.post(` https://server1.rishati.com/api/v1/project/create`,  
             { 
                 category,
                 subcategory,
@@ -93,7 +93,7 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
               .then(res =>{ 
                  if(res.status === 200){ 
                     
-                    setProjectServerReq(res)
+                    setProjectServerReq(res.data)
                  }  
               }).catch((err) => { 
                 
@@ -109,7 +109,7 @@ export default function HorizontalLinearStepper({ category, subcategory }) {
     };
     // ----------- ----------------
 
-console.log('tayeb', projectServerReq)
+  
 
     return (
         <Box p={5} sx={{ width: '100%' }}>
@@ -207,7 +207,7 @@ console.log('tayeb', projectServerReq)
                 <Fragment>
 
                     <Box>
-                        <CreateProjectStep4 com_sub_cate={selectSubCategory} company_cate={selectCategory}   category={category} subcategory={subcategory} projectName={projectName} />
+                        <CreateProjectStep4 com_sub_cate={selectSubCategory} company_cate={selectCategory}   category={category} subcategory={subcategory} projectName={projectName} projectServerReq={projectServerReq} />
                     </Box>
 
 

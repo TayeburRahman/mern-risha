@@ -3,6 +3,7 @@ import { Box, Button, Grid, Paper } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import UserEdit from '../../modal/UserEdit';
 import './UserProfile.css';
 
@@ -15,7 +16,7 @@ function UserProfile() {
 
     useEffect(() => {
         let email = auth?.user?.email
-        axios.get(` http://localhost:5000/api/v1/users/single/${email}`)
+        axios.get(` https://server1.rishati.com/api/v1/users/single/${email}`)
             .then((res) => {
                 setUser(res?.data);
             });
@@ -23,7 +24,7 @@ function UserProfile() {
 
     useEffect(() => {
         let email = auth?.user?.email
-        axios.get(` http://localhost:5000/api/v1/project/user/${email}`)
+        axios.get(` https://server1.rishati.com/api/v1/project/user/${email}`)
             .then((res) => {
                 setProject(res?.data);
             });
@@ -39,10 +40,10 @@ function UserProfile() {
     return (
         <div>
             <Paper elevation={0} className='paper100' >
-                <Box>
-                    <h1>User Profile</h1>
+                <Box pt={4}>
+                    <h4>User Profile</h4>
                 </Box>
-                <Grid container mt={3}>
+                <Grid container mt={3} p={3}>
                     <Grid item lg={6} md={8} sm={12} className="box_main_info">
                         <Grid className='profile_box'>
                             <h6 className='Information'>Profile Information</h6>
@@ -68,16 +69,16 @@ function UserProfile() {
 
                 </Grid>
 
-                <Box>
-                    <Box container p={3}>
+                <Box p={3}>
+                    <Box container p={3}  >
                         <h6 className='Information text-left'>Project</h6>
 
                         {
                             project?.length ? (
-                                <Grid container mt={3}>
-                                    {project?.map(({ category, subcategory, company_cate, project_name, input_form }, idx) => (
-                                        <Grid item lg={6} md={6} sm={12} className="box_main_info box-shadow">
-                                            <Box className='dp-flex justifyContent'>
+                                <Grid container mt={3} >
+                                    {project?.map(({ category, subcategory, company_cate, project_name, input_form,_id }, idx) => (
+                                        <Grid item lg={5} md={5} sm={12} m={1} className="box_main_info box-shadow">
+                                            <Link to={`/dashboard/profile/project/${_id}`} className='dp-flex justifyContent'>
                                               <Box className='text-left d-flex'>
                                                 <Box pr={2}>
                                                 <p className='info_tittle text-left padding-b'> Category: <span className='info_span'>{category}</span>  </p>
@@ -88,7 +89,7 @@ function UserProfile() {
                                                 <p className='info_tittle text-left padding-b'> Project Name: <span className='info_span'>{project_name}</span>  </p>  
                                                </Box>
                                                 </Box>
-                                            </Box>
+                                            </Link>
                                         </Grid>
                                     ))}
                                 </Grid>

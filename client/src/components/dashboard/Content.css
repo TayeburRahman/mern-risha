@@ -41,3 +41,35 @@
 .link-d {
   text-decoration: none !important;
 }
+
+.flex-container {
+  margin: 10px;
+  display: flex;
+}
+
+.displayInline p {
+  display: inline;
+}
+.displayInline h1 {
+  display: inline;
+}
+
+.displayInline h2 {
+  display: inline;
+}
+
+.displayInline h3 {
+  display: inline;
+}
+
+.displayInline h4 {
+  display: inline;
+}
+
+.displayInline h5 {
+  display: inline;
+}
+
+.displayInline h6 {
+  display: inline;
+}

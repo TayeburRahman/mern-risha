@@ -12,7 +12,7 @@ function AddProjectCategory({categoryDetails,subCategory,setState, state}) {
 
        let companyCategory = await data?.companyCategory  
 
-        axios.post(` http://localhost:5000/api/v1/subcategory/company-c`,  
+        axios.post(` https://server1.rishati.com/api/v1/subcategory/company-c`,  
         {
             category: categoryDetails?.tittle,
             subcategory: subCategory?.tittle,

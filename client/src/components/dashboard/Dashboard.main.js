@@ -31,7 +31,7 @@ const DashboardMain = () => {
     const [category, setCategory] = React.useState()
 
     useEffect(() => {
-        axios.get(' http://localhost:5000/api/v1/category/all')
+        axios.get(' https://server1.rishati.com/api/v1/category/all')
             .then((response) => {
                 setCategory(response.data);
             });
@@ -59,7 +59,7 @@ const DashboardMain = () => {
                                         >
                                             <Box className='dp-flex justifyContent'>
                                                 <Box>
-                                                    <img className='fontSize-25' src={` http://localhost:5000/${data?.avatar}`} width="50px" height="50px" />
+                                                    <img className='fontSize-25' src={` https://server1.rishati.com/${data?.avatar}`} width="50px" height="50px" />
                                                 </Box>
                                                 <Box className='dp-grid text-left'>
                                                     <span className=" " style={{color:"white"}}>{data?.subCategory?.length ? data?.subCategory?.length : 0}</span>
@@ -97,7 +97,7 @@ const DashboardMain = () => {
                                                     <Link className="dashboard-stat dp-grid box-style-d" to={`sub_category/${_id}/${idx}`}>
                                                         <Box className='dp-flex justifyContent'>
                                                             <Box style={{ width: "20%" }}>
-                                                                <img src={` http://localhost:5000/${avatar}`} width="50%" />
+                                                                <img src={` https://server1.rishati.com/${avatar}`} width="50%" />
                                                             </Box>
                                                             <Box className='dp-grid text-left' style={{ width: "80%" }}>
                                                                 <span className="number counter">{tittle}</span>

@@ -12,10 +12,10 @@ const createContent  = async (req, res) => {
       com_sub_cate,
       category,
       subcategory, 
-      content } = req.body  
+      inputValue0, inputValue1, inputValue2, inputValue3, inputValue4, inputValue5, inputValue6, inputValue7, inputValue8,inputValueEnd } = req.body  
 
     if (com_sub_cate) {  
-     const data = await contentModels.create({ company_cate, com_sub_cate, category, subcategory , content})
+     const data = await contentModels.create({ company_cate, com_sub_cate, category, subcategory , inputValue0, inputValue1, inputValue2, inputValue3, inputValue4, inputValue5, inputValue6, inputValue7, inputValue8,inputValueEnd})
 
       return res.status(200).json({
         data,
@@ -24,7 +24,7 @@ const createContent  = async (req, res) => {
       }); 
     } 
     
-    const data = await contentModels.create({ company_cate, category, subcategory , content}) 
+    const data = await contentModels.create({ company_cate, category, subcategory , inputValue0,inputValue1, inputValue2, inputValue3, inputValue4, inputValue5, inputValue6, inputValue7, inputValue8,inputValueEnd}) 
      return res.status(200).json({
       data,
       status: "success",

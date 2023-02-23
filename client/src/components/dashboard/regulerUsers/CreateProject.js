@@ -16,7 +16,7 @@ function CreateProject() {
     console.log('path',path)
     
     useEffect(() => {
-        axios.get(` http://localhost:5000/api/v1/category/signal/${path?.categoryId}`)
+        axios.get(` https://server1.rishati.com/api/v1/category/signal/${path?.categoryId}`)
             .then((res) => {
                 setCategory(res?.data?.category);
                 setSubCategory(res.data?.subcategory?.find((data, idx) => idx === Number(path?.index)));

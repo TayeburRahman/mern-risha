@@ -116,9 +116,7 @@ const  deleteUserCategoryProject = async (req, res) => {
 
 const  getUserAllProject = async (req, res) => {
   try { 
-    const user_email = req.params.email
-
-    console.log(user_email)
+    const user_email = req.params.email 
 
     const project = await projectModels.find({ $and: [{user_email}] }) 
     console.log(project)
